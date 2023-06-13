@@ -7,26 +7,26 @@ views = Blueprint(__name__, "views")
 def home():
     return render_template("main.html")
 
-@views.route("/author.html")
+@views.route("/author")
 def author():
     return render_template("author.html")
 
-@views.route("/extraction.html")
+@views.route("/extraction")
 def extraction():
     return render_template("extraction.html")
 
-@views.route("/products.html")
+@views.route("/products")
 def products():
     products = products_list
     return render_template("products.html", products=products)
 
-@views.route("/main.html")
+@views.route("/main")
 def main():
     return redirect(url_for("views.home"))
 
 products_list = []
 
-@views.route("/extraction.html", methods = ["POST", "GET"])
+@views.route("/extraction", methods = ["POST", "GET"])
 def form():
     if request.method =="POST":
         product_code = request.form["product_code"]
@@ -39,11 +39,8 @@ def form():
             f.close()
             return redirect(url_for("views.products"))
         else:
-            # alert = open("alert.txt", "r")
-            # alert = alert.read()
-            # alert = "<h1>Uwaga</h1>"
             return render_template("extraction.html", alert="Invalid Product Code")
-            # return render_template("extraction.html", alert=alert)
+            # return render_template("extraction", alert=alert)
 
 
     else:
