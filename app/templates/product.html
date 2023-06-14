@@ -20,16 +20,16 @@
 	<div class="collapse navbar-collapse" id="mynavbar">
 		<ul class="navbar-nav me-auto">
 			<li class="nav-item">
-			<a class="nav-link text-white" href="{{url_for('extraction')}}">Ekstrakcja opinii</a>
+			<a class="nav-link text-white" href="{{url_for('views.extraction')}}">Ekstrakcja opinii</a>
 			</li>
 			<li class="nav-item">
-			<a class="nav-link text-white" href="{{url_for('products')}}">Lista produktow</a>
+			<a class="nav-link text-white" href="{{url_for('views.products')}}">Lista produktow</a>
 			</li>
 			<li class="nav-item">
-			<a class="nav-link text-white" href="{{url_for('main')}}">Strona glowna</a>
+			<a class="nav-link text-white" href="{{url_for('views.main')}}">Strona glowna</a>
 			</li>
 			<li class="nav-item">
-			<a class="nav-link text-white" href="{{url_for('author')}}">O autorze</a>
+			<a class="nav-link text-white" href="{{url_for('views.author')}}">O autorze</a>
 			</li>
 		</ul>
 	<form class="d-flex">
@@ -42,7 +42,7 @@
 
 <section>
 	<div class="container-fluid p-5">
-		<h2> {{file}} </h2>
+		<h2> {{product_code}} </h2>
 	</div>
 
 

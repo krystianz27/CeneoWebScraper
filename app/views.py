@@ -1,5 +1,8 @@
 from flask import Blueprint, render_template, redirect, url_for, request
+
 import requests
+import json
+import os
 
 views = Blueprint(__name__, "views")
 
@@ -20,6 +23,10 @@ def products():
     products = products_list
     return render_template("products.html", products=products)
 
+@views.route("/product")
+def product():
+    return render_template("product.html")
+
 @views.route("/main")
 def main():
     return redirect(url_for("views.home"))
@@ -34,10 +41,11 @@ def form():
         response = requests.get(url)
         if response.status_code == 200:
             products_list.append(product_code)
-            f = open("ProductsList.txt", "a")
-            f.write(f"{product_code}\n")
-            f.close()
-            return redirect(url_for("views.products"))
+            # f = open("ProductsList.txt", "a")
+            # f.write(f"{product_code}\n")
+            # f.close()
+            return redirect(url_for("views.product"), product_code=product_code)
+            # return render_template("product.html", product_code=product_code)
         else:
             return render_template("extraction.html", alert="Invalid Product Code")
             # return render_template("extraction", alert=alert)
